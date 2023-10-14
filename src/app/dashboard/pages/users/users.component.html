@@ -1,0 +1,10 @@
+<app-users-table
+  [dataSource]="users"
+  (deleteUser)="onDeleteUser($event)"
+  (editUser)="onEditUser($event)"
+></app-users-table>
+
+<button mat-flat-button color="primary" (click)="openUserDialog()">
+  <mat-icon>+</mat-icon>
+  Crear Usuario
+</button>
