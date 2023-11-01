@@ -1,28 +1,6 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" id="sideNav">
-    <h1 appTitleFont>New Trainers</h1>
-    <mat-list-item>
-      <button mat-stroked-button color="accent">Mi Perfil</button>
-    </mat-list-item>
-    <mat-list-item>
-      <button mat-stroked-button color="accent">Mis Cursos</button>
-    </mat-list-item>
-    <mat-list-item>
-      <button mat-stroked-button color="accent">Chat</button>
-    </mat-list-item>
-    <mat-list-item>
-      <button mat-stroked-button color="accent">Ayuda</button>
-    </mat-list-item>
-    <mat-list-item>
-      <button mat-stroked-button color="accent">Postularme</button>
-    </mat-list-item>
-
-    <mat-list-item>
-      <a matListItemTitle href="..."></a>
-      <button mat-icon-button matListItemMeta>
-        <mat-icon color="accent">manage_accounts</mat-icon>
-      </button>
-    </mat-list-item>
+    <app-sidebar></app-sidebar>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -36,7 +14,7 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <span appTitleFont>Mis Alumnos</span>
+      <span appTitleFont>New Trainers</span>
       <span class="example-spacer"></span>
       <button
         mat-icon-button
@@ -55,6 +33,6 @@
     </mat-toolbar>
   </div>
   <main>
-    <app-users></app-users>
+    <router-outlet></router-outlet>
   </main>
 </mat-drawer-container>

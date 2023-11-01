@@ -1,0 +1,11 @@
+<h1>Mis Alumnos</h1>
+<app-student-table
+  [dataSource]="(students$ | async) || []"
+  (deleteStudent)="onDeleteStudent($event)"
+  (editStudent)="onEditStudent($event)"
+></app-student-table>
+
+<button mat-flat-button color="primary" (click)="addStudent()">
+  <mat-icon>+</mat-icon>
+  Agregar Alumno
+</button>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
 import { User } from './models';
+import { UsersService } from './user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -11,71 +13,50 @@ import { User } from './models';
 export class UsersComponent {
   userName = '';
   randomId = Math.floor(Math.random() * 1000000);
-  lastId = this.randomId;
-  users: User[] = [
-    {
-      id: 125937,
-      name: 'Pedro',
-      lastName: 'Farías',
-      email: 'pedro@alumnos.com',
-      age: 18,
-    },
-    {
-      id: 135431,
-      name: 'Fernando',
-      lastName: 'Vieites',
-      email: 'fernando@alumnos.com',
-      age: 19,
-    },
-    {
-      id: 184553,
-      name: 'María',
-      lastName: 'López',
-      email: 'maría@alumnos.com',
-      age: 19,
-    },
-  ];
-  constructor(private matDialog: MatDialog) {}
-  openUserDialog(): void {
+  lastId = this.randomId; // ARREGLAR PARA RECIBIR ID ALEATORIO
+  users$: Observable<User[]> | undefined;
+
+  constructor(
+    private matDialog: MatDialog,
+    private usersService: UsersService
+  ) {
+    this.users$ = this.usersService.getUsers$();
+  }
+  addUser(): void {
     this.matDialog
       .open(UsersDialogComponent)
       .afterClosed()
       .subscribe({
-        next: (v) => {
-          console.log('valor', v);
-
-          if (!!v) {
-            this.lastId++;
-            this.users = [
-              ...this.users,
-              {
-                ...v,
-                id: this.lastId,
-              },
-            ];
+        next: (result: any) => {
+          if (result) {
+            this.users$ = this.usersService.creatUsers$({
+              id: 0, // ARREGLAR PARA RECIBIR ID ALEATORIO
+              name: result.name,
+              lastName: result.lastName,
+              email: result.email,
+              age: result.age,
+            });
           }
         },
       });
   }
 
-  onEditUser(eUser: User): void {
+  onEditUser(userID: number): void {
     this.matDialog
       .open(UsersDialogComponent, {
-        data: eUser,
+        data: userID,
       })
       .afterClosed()
       .subscribe({
-        next: (v) => {
-          if (!!v) {
-            this.users = this.users.map((u) =>
-              u.id === eUser.id ? { ...u, ...v } : u
-            );
+        next: (result) => {
+          if (!!result) {
+            this.users$ = this.usersService.editUsers$(userID, result);
           }
         },
       });
   }
 
   onDeleteUser(userId: number): void {
-    this.users = this.users.filter((u) => u.id !== userId);
+    this.users$ = this.usersService.deleteUsers$(userId);
   }
 }

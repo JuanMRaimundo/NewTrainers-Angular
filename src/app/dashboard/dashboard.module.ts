@@ -7,10 +7,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsPageModule } from './pages/forms-page/forms-page.module';
-import { UsersModule } from './pages/users/users.module';
+import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SidebarComponent, ToolbarComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -18,8 +21,9 @@ import { UsersModule } from './pages/users/users.module';
     MatIconModule,
     FormsPageModule,
     MatButtonModule,
-    UsersModule,
     SharedModule,
+    RouterModule,
+    DashboardRoutingModule,
   ],
   exports: [DashboardComponent],
 })
