@@ -1,12 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { User } from '../../models';
+import { FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '../../user.service';
 
 @Component({

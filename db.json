@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "name": "decano",
+      "lastName": "admin",
+      "email": "decano@admin.com",
+      "password": "123456",
+      "age": "56",
+      "token": "963852741",
+      "role": "ADMIN",
+      "id": 1
+    },
+    {
+      "name": "Mario",
+      "lastName": "Gutierrez",
+      "email": "mario@admin",
+      "password": "123354",
+      "age": "35",
+      "token": "963842741",
+      "role": "ADMIN",
+      "id": 2
+    },
+    {
+      "name": "Jorge",
+      "lastName": "Ramon",
+      "email": "jorge@admin",
+      "password": "123684",
+      "age": "50",
+      "token": "962452741",
+      "role": "ADMIN",
+      "id": 3
+    },
+    {
+      "name": "Marta",
+      "lastName": "Remeira",
+      "email": "marta@admin.com",
+      "password": "321654",
+      "age": "56",
+      "token": "963562741",
+      "role": "ADMIN",
+      "id": 8
+    }
+  ],
+  "courses": [],
+  "students": []
+}

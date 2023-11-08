@@ -1,37 +1,18 @@
 import { Injectable } from '@angular/core';
 import { User } from './models';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  users: User[] = [
-    {
-      id: 125937,
-      name: 'Pedro',
-      lastName: 'Farías',
-      email: 'pedro@usuario.com',
-      age: 33,
-    },
-    {
-      id: 135431,
-      name: 'Fernando',
-      lastName: 'Vieites',
-      email: 'fernando@usuario.com',
-      age: 40,
-    },
-    {
-      id: 184553,
-      name: 'María',
-      lastName: 'López',
-      email: 'maría@usuario.com',
-      age: 35,
-    },
-  ];
+  constructor(private httpClient: HttpClient) {}
+  users: User[] = [];
 
   getUsers$(): Observable<User[]> {
-    return of(this.users);
+    return this.httpClient.get<User[]>(`${environment.baseUrl}/users`);
   }
 
   creatUsers$(payload: User): Observable<User[]> {
@@ -47,5 +28,21 @@ export class UsersService {
   }
   getUserByID$(id: number): Observable<User | undefined> {
     return of(this.users.find((u) => u.id === id));
+  }
+  gererateUniqueId(data$: Observable<User[]>): Observable<number> {
+    return data$.pipe(
+      map((objects) => {
+        const maxID = objects.reduce(
+          (max, obj) => (obj.id > max ? obj.id : max),
+          0
+        );
+        let newId = maxID + 1;
+
+        while (objects.some((obj) => obj.id === newId)) {
+          newId++;
+        }
+        return newId;
+      })
+    );
   }
 }

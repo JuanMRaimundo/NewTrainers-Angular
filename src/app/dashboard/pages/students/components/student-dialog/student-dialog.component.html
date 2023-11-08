@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  {{ editingStudent ? "Editar alumno" : "Crear alumno" }}
+  {{ studentId ? "Editar alumno" : "Crear alumno" }}
 </h1>
 <div mat-dialog-content>
   <form [formGroup]="studentForm">
@@ -7,7 +7,7 @@
       <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Nombre</mat-label>
-          <input formControlName="name" matInput />
+          <input [formControl]="nameControl" matInput />
           <mat-error>
             {{ studentForm.get("name")?.errors | errorForms }}
           </mat-error>
@@ -16,7 +16,7 @@
       <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Apellido</mat-label>
-          <input matInput formControlName="lastName" />
+          <input matInput [formControl]="lastNameControl" />
           <mat-error>
             {{ studentForm.get("name")?.errors | errorForms }}
           </mat-error>
@@ -26,7 +26,7 @@
       <div class="col-10">
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" />
+          <input matInput [formControl]="emailControl" />
 
           <mat-error>
             {{ emailControl.errors | errorForms }}
@@ -37,7 +37,7 @@
       <div class="col-2">
         <mat-form-field class="w-100">
           <mat-label>Edad</mat-label>
-          <input matInput formControlName="age" />
+          <input matInput [formControl]="ageControl" />
           <mat-error>
             {{ studentForm.get("email")?.errors | errorForms }}
           </mat-error>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Student } from './models';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +48,23 @@ export class StudentsService {
       this.students.map((s) => (s.id === id ? { ...s, ...payload } : s))
     );
   }
-  getStudentByID$(id: number): Observable<Student | undefined> {
+  getStudentByID$(id: number | null): Observable<Student | undefined> {
     return of(this.students.find((s) => s.id === id));
+  }
+  gererateUniqueId(data$: Observable<Student[]>): Observable<number> {
+    return data$.pipe(
+      map((objects) => {
+        const maxID = objects.reduce(
+          (max, obj) => (obj.id > max ? obj.id : max),
+          0
+        );
+        let newId = maxID + 1;
+
+        while (objects.some((obj) => obj.id === newId)) {
+          newId++;
+        }
+        return newId;
+      })
+    );
   }
 }

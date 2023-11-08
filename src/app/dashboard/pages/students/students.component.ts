@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Student } from './models';
 import { StudentsService } from './students.service';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-students',
@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 export class StudentsComponent {
   studentsName = '';
   randomId = Math.floor(Math.random() * 1000000);
-  lastId = this.randomId;
-  students$: Observable<Student[]> | undefined;
+  idUnique = 0;
+  students$: Observable<Student[]>;
 
   constructor(
     private matDialog: MatDialog,
@@ -29,28 +29,33 @@ export class StudentsComponent {
       .subscribe({
         next: (result: any) => {
           if (result) {
-            this.students$ = this.studentsService.creatStudent$({
-              id: 0, // ARREGLAR PARA RECIBIR ID ALEATORIO
-              name: result.name,
-              lastName: result.lastName,
-              email: result.email,
-              age: result.age,
-            });
+            this.studentsService
+              .creatStudent$({
+                id: this.onIdUnique(),
+                name: result.name,
+                lastName: result.lastName,
+                email: result.email,
+                age: result.age,
+              })
+              .pipe(switchMap(() => this.studentsService.getStudents$()))
+              .subscribe((students) => {
+                this.students$ = of(students);
+              });
           }
         },
       });
   }
 
-  onEditStudent(studentID: number): void {
+  onEditStudent(student: Student): void {
     this.matDialog
       .open(StudentDialogComponent, {
-        data: studentID,
+        data: student,
       })
       .afterClosed()
       .subscribe({
         next: (v) => {
           if (!!v) {
-            this.students$ = this.studentsService.editStudent$(studentID, v);
+            this.students$ = this.studentsService.editStudent$(student.id, v);
           }
         },
       });
@@ -58,5 +63,10 @@ export class StudentsComponent {
 
   onDeleteStudent(studentId: number): void {
     this.students$ = this.studentsService.deleteStudent$(studentId);
+  }
+  onIdUnique(): void {
+    this.studentsService.gererateUniqueId(this.students$).subscribe((v) => {
+      this.idUnique = v;
+    });
   }
 }

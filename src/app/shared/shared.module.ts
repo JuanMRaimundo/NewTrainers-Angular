@@ -12,7 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ErrorFormsPipe } from './pipes/error-forms.pipe';
 import { MatListModule } from '@angular/material/list';
 import { TitleFontDirective } from './directives/title-font.directive';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [FullnamePipe, ErrorFormsPipe, TitleFontDirective],
   imports: [CommonModule],
@@ -30,6 +30,7 @@ import { TitleFontDirective } from './directives/title-font.directive';
     ErrorFormsPipe,
     MatListModule,
     TitleFontDirective,
+    MatDatepickerModule,
   ],
 })
 export class SharedModule {}

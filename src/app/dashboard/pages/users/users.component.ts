@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 })
 export class UsersComponent {
   userName = '';
-  randomId = Math.floor(Math.random() * 1000000);
-  lastId = this.randomId; // ARREGLAR PARA RECIBIR ID ALEATORIO
-  users$: Observable<User[]> | undefined;
+  idUnique: number = 0;
+
+  users$: Observable<User[]>;
 
   constructor(
     private matDialog: MatDialog,
@@ -30,11 +30,13 @@ export class UsersComponent {
         next: (result: any) => {
           if (result) {
             this.users$ = this.usersService.creatUsers$({
-              id: 0, // ARREGLAR PARA RECIBIR ID ALEATORIO
+              id: this.onIdUnique(),
               name: result.name,
               lastName: result.lastName,
               email: result.email,
               age: result.age,
+              role: result.role,
+              token: '', //ARREGLAR PARA RECIBIR TOKEN
             });
           }
         },
@@ -58,5 +60,15 @@ export class UsersComponent {
 
   onDeleteUser(userId: number): void {
     this.users$ = this.usersService.deleteUsers$(userId);
+  }
+
+  onIdUnique(): number {
+    this.usersService.gererateUniqueId(this.users$).subscribe({
+      next: (v) => {
+        this.idUnique = v;
+      },
+      complete: () => {},
+    });
+    return this.idUnique;
   }
 }
