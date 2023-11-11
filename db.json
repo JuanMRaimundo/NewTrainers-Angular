@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "name": "decano",
+      "name": "Decano",
       "lastName": "admin",
       "email": "decano@admin.com",
       "password": "123456",
@@ -13,7 +13,7 @@
     {
       "name": "Mario",
       "lastName": "Gutierrez",
-      "email": "mario@admin",
+      "email": "mario@admin.com",
       "password": "123354",
       "age": "35",
       "token": "963842741",
@@ -23,7 +23,7 @@
     {
       "name": "Jorge",
       "lastName": "Ramon",
-      "email": "jorge@admin",
+      "email": "jorge@admin.com",
       "password": "123684",
       "age": "50",
       "token": "962452741",
@@ -39,8 +39,101 @@
       "token": "963562741",
       "role": "ADMIN",
       "id": 8
+    },
+    {
+      "id": 9,
+      "name": "Agustin",
+      "lastName": "Pereyra",
+      "email": "agusP@admin.com",
+      "age": "33",
+      "token": ""
+    },
+    {
+      "id": 10,
+      "name": "Alfredo",
+      "lastName": "Castaño",
+      "email": "alfredoC@admin.com",
+      "age": "25",
+      "token": ""
+    },
+    {
+      "id": 11,
+      "name": "Juan Marco",
+      "lastName": "Raimundo",
+      "email": null,
+      "age": null,
+      "token": ""
+    },
+    {
+      "id": 12,
+      "name": "Santiago",
+      "lastName": "Olivera",
+      "email": "santiago.olivera@admin.com",
+      "age": "32",
+      "token": ""
     }
   ],
-  "courses": [],
-  "students": []
+  "courses": [
+    {
+      "id": 1,
+      "name": "Entrenamiento Funcional",
+      "startDate": "",
+      "endDate": "",
+      "teacher": "",
+      "students": []
+    },
+    {
+      "id": 2,
+      "name": "Entrenamiento personalizado",
+      "startDate": "",
+      "endDate": "",
+      "teacher": "",
+      "students": []
+    },
+    {
+      "id": 3,
+      "name": "Entrenamiento infanto-juvenil",
+      "startDate": "",
+      "endDate": "",
+      "teacher": "",
+      "students": []
+    }
+  ],
+  "students": [
+    {
+      "id": 684132,
+      "name": "Gustavo",
+      "lastName": "Rojas",
+      "email": "gustavo@alumnos.com",
+      "age": 18
+    },
+    {
+      "id": 354635,
+      "name": "Joaquin",
+      "lastName": "Sola",
+      "email": "joaquin.sola@alumnos.com",
+      "age": 21
+    },
+    {
+      "id": 673834,
+      "name": "Florencia",
+      "lastName": "Sava",
+      "email": "florencia.sava@alumnos.com",
+      "age": 19
+    },
+    {
+      "id": 754691,
+      "name": "Victoria",
+      "lastName": "Ramirez",
+      "email": "victoria.ramirez@alumnos.com",
+      "age": 22
+    },
+    {
+      "id": 7658412,
+      "name": "Pedro",
+      "lastName": "Figalo",
+      "email": "pedro.figalo@alumnos.com",
+      "age": 19
+    }
+  ]
 }

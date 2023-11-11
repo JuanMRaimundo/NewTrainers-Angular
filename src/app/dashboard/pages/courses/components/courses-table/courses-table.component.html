@@ -1,7 +1,4 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
   <!-- ID Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>#</th>
@@ -17,7 +14,17 @@
   <!-- StartDay Column -->
   <ng-container matColumnDef="startDate">
     <th mat-header-cell *matHeaderCellDef>Inicio</th>
-    <td mat-cell *matCellDef="let course">{{ course.startDate }}</td>
+    <td mat-cell *matCellDef="let course">
+      {{ course.startDate | date : "dd/MM/YYY" }}
+    </td>
+  </ng-container>
+
+  <!-- FinishDay Column -->
+  <ng-container matColumnDef="finishDate">
+    <th mat-header-cell *matHeaderCellDef>Finalización</th>
+    <td mat-cell *matCellDef="let course">
+      {{ course.finishDate | date : "dd/MM/YYY" }}
+    </td>
   </ng-container>
 
   <!-- Actions Column -->

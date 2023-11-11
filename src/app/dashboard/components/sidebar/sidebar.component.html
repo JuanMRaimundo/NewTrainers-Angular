@@ -1,4 +1,4 @@
-<h1 appTitleFont>Panel de Control</h1>
+<p appTitleFont>¡Bienvenido/a {{ (authUser$ | async)?.name }}!</p>
 <mat-list-item routerLink="home">
   <button mat-stroked-button color="accent">Home</button>
 </mat-list-item>

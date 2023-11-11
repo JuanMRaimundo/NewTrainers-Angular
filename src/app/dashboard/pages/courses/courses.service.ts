@@ -1,29 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Course } from './models';
+import { environment } from 'src/environments/environment.local';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class CoursesService {
-  courses: Course[] = [
-    {
-      id: 1,
-      name: 'Entrenamiento Intermitente',
-      startDate: new Date(),
-    },
-    {
-      id: 2,
-      name: 'Fútbol Infantil',
-      startDate: new Date(),
-    },
-    {
-      id: 3,
-      name: 'Entrenamiento Funcional',
-      startDate: new Date(),
-    },
-  ];
+  constructor(private httpClient: HttpClient) {}
+  courses: Course[] = [];
 
   getCourses$(): Observable<Course[]> {
-    return of(this.courses);
+    return this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`);
   }
 
   creatCourse$(payload: Course): Observable<Course[]> {

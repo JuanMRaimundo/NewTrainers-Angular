@@ -39,10 +39,13 @@ export class StudentDialogComponent {
       age: ['', Validators.required],
     }); */
     if (studentId) {
+      console.log(studentId);
+
       this.studentsService.getStudentByID$(studentId.id).subscribe({
         next: (s) => {
-          console.log('Alumno:', s);
           if (s) {
+            console.log(s);
+
             this.studentForm.patchValue(s);
           }
         },
@@ -54,7 +57,7 @@ export class StudentDialogComponent {
     if (this.studentForm.invalid) {
       return this.studentForm.markAllAsTouched();
     } else {
-      //logica para crear un curso, se cierra el diálogo, y envío el valor del formulario al CourseDialogComponent, y se envía al servicio de cursos
+      //logica para crear un alumno, se cierra el diálogo, y envío el valor del formulario al StudentDialogComponent, y se envía al servicio de alumnos
       this.matDialogRef.close(this.studentForm.value);
     }
   }

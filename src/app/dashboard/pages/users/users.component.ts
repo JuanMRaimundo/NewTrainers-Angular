@@ -34,6 +34,7 @@ export class UsersComponent {
               name: result.name,
               lastName: result.lastName,
               email: result.email,
+              password: result.password,
               age: result.age,
               role: result.role,
               token: '', //ARREGLAR PARA RECIBIR TOKEN
@@ -43,16 +44,21 @@ export class UsersComponent {
       });
   }
 
-  onEditUser(userID: number): void {
+  onEditUser(user: User): void {
     this.matDialog
       .open(UsersDialogComponent, {
-        data: userID,
+        data: user,
       })
       .afterClosed()
       .subscribe({
         next: (result) => {
-          if (!!result) {
-            this.users$ = this.usersService.editUsers$(userID, result);
+          if (result) {
+            console.log(result);
+            console.log(user);
+            //En estas líneas cambio la lógica para editar y que la tabla vuelva a dibujarse en el DOM
+            this.usersService.editUsers$(user.id, result).subscribe(() => {
+              this.usersService.getUsers$();
+            });
           }
         },
       });

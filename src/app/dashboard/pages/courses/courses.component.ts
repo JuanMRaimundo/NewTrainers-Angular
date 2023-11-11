@@ -32,7 +32,8 @@ export class CoursesComponent {
               //si recibo datos se crea y pushea el curso nuevo
               id: 0,
               name: result.name,
-              startDate: new Date(),
+              startDate: result.startDate,
+              finishDate: result.finishDate,
             });
           }
         },

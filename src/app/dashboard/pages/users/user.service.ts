@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './models';
-import { Observable, map, of } from 'rxjs';
+import { Observable, concatMap, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 
@@ -16,18 +16,26 @@ export class UsersService {
   }
 
   creatUsers$(payload: User): Observable<User[]> {
-    this.users.push(payload);
-    return of([...this.users]);
+    return this.httpClient
+      .post<User>(`${environment.baseUrl}/users`, payload)
+      .pipe(concatMap(() => this.getUsers$()));
   }
   deleteUsers$(id: number): Observable<User[]> {
     this.users = this.users.filter((c) => c.id !== id);
     return of(this.users);
   }
   editUsers$(id: number, payload: User): Observable<User[]> {
-    return of(this.users.map((c) => (c.id === id ? { ...c, ...payload } : c)));
+    return this.httpClient
+      .put<User>(`${environment.baseUrl}/users/${id}`, payload)
+      .pipe(concatMap(() => this.getUsers$()));
   }
-  getUserByID$(id: number): Observable<User | undefined> {
-    return of(this.users.find((u) => u.id === id));
+
+  getUserByID$(id: number | null): Observable<User | undefined> {
+    if (id === null) {
+      console.log('getUserByID$ called with ID:', id);
+      return of(undefined);
+    }
+    return this.httpClient.get<User>(`${environment.baseUrl}/users/${id}`);
   }
   gererateUniqueId(data$: Observable<User[]>): Observable<number> {
     return data$.pipe(

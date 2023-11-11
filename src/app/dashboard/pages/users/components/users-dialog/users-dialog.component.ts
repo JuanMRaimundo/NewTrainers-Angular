@@ -2,6 +2,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '../../user.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../models';
 
 @Component({
   selector: 'app-users-dialog',
@@ -24,19 +26,12 @@ export class UsersDialogComponent {
   constructor(
     private matDialogRef: MatDialogRef<UsersDialogComponent>,
     private usersService: UsersService,
-    @Inject(MAT_DIALOG_DATA) public userID?: number
+    @Inject(MAT_DIALOG_DATA) public user?: User
   ) {
-    console.log('UserID:', userID);
+    if (user) {
+      console.log(user);
 
-    if (userID) {
-      this.usersService.getUserByID$(userID).subscribe({
-        next: (u) => {
-          console.log('User data:', u);
-          if (u) {
-            this.userForm.patchValue(u);
-          }
-        },
-      });
+      this.userForm.patchValue(user);
     }
   }
 

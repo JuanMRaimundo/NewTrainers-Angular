@@ -1,11 +1,12 @@
 <h1>Mis Cursos</h1>
-<div>
-  <button mat-raised-button (click)="addCourse()">Agregar Curso</button>
-  <button mat-raised-button>Remove column</button>
-  <button mat-raised-button>Shuffle</button>
-</div>
+
 <app-courses-table
   [dataSource]="(courses$ | async) || []"
   (deleteCourse)="onDeleteCourse($event)"
   (editCourse)="onEditCourse($event)"
 ></app-courses-table>
+<div>
+  <button mat-raised-button color="primary" (click)="addCourse()">
+    Agregar Curso
+  </button>
+</div>
