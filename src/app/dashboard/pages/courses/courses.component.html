@@ -1,5 +1,8 @@
 <h1>Mis Cursos</h1>
-
+<mat-progress-bar
+  *ngIf="loadingCourses"
+  mode="indeterminate"
+></mat-progress-bar>
 <app-courses-table
   [dataSource]="(courses$ | async) || []"
   (deleteCourse)="onDeleteCourse($event)"
@@ -7,6 +10,7 @@
 ></app-courses-table>
 <div>
   <button mat-raised-button color="primary" (click)="addCourse()">
+    <mat-icon>+</mat-icon>
     Agregar Curso
   </button>
 </div>

@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsPageModule } from './pages/forms-page/forms-page.module';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -19,7 +18,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    FormsPageModule,
     MatButtonModule,
     SharedModule,
     RouterModule,

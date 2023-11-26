@@ -4,6 +4,7 @@ import { Student } from './models';
 import { StudentsService } from './students.service';
 import { StudentDialogComponent } from './components/student-dialog/student-dialog.component';
 import { Observable, of, switchMap } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-students',
@@ -12,8 +13,8 @@ import { Observable, of, switchMap } from 'rxjs';
 })
 export class StudentsComponent {
   studentsName = '';
-  randomId = Math.floor(Math.random() * 1000000);
   idUnique = 0;
+  loadingStudents: boolean = true;
   students$: Observable<Student[]>;
 
   constructor(
@@ -21,6 +22,11 @@ export class StudentsComponent {
     private studentsService: StudentsService
   ) {
     this.students$ = this.studentsService.getStudents$();
+    this.students$.subscribe({
+      next: () => {
+        this.loadingStudents = false;
+      },
+    });
   }
   addStudent(): void {
     this.matDialog
@@ -62,7 +68,19 @@ export class StudentsComponent {
   }
 
   onDeleteStudent(studentId: number): void {
-    this.students$ = this.studentsService.deleteStudent$(studentId);
+    Swal.fire({
+      title: '¿Estás seguro que desea eliminarlo?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.students$ = this.studentsService.deleteStudent$(studentId);
+      }
+    });
   }
   onIdUnique(): void {
     this.studentsService.gererateUniqueId(this.students$).subscribe((v) => {

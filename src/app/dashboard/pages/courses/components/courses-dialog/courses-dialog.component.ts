@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CoursesService } from '../../courses.service';
+import { Course } from '../../models';
+import { CoursesDialogService } from './courses-dialog.service';
 
 @Component({
   selector: 'app-courses-dialog',
@@ -10,30 +11,30 @@ import { CoursesService } from '../../courses.service';
 })
 export class CoursesDialogComponent {
   nameControl = new FormControl();
+  teacherControl = new FormControl();
   startDateControl = new FormControl();
   finishDateControl = new FormControl();
 
   courseForm = new FormGroup({
     name: this.nameControl,
+    teacher: this.teacherControl,
     startDate: this.startDateControl,
     finishDate: this.finishDateControl,
   });
+
+  teachers: string[] = [];
+
   constructor(
     private matDialogREef: MatDialogRef<CoursesDialogComponent>,
-    private coursesService: CoursesService,
-    @Inject(MAT_DIALOG_DATA) public courseID?: number
+    private coursesDialogService: CoursesDialogService,
+    @Inject(MAT_DIALOG_DATA) public course?: Course
   ) {
-    console.log('courseID:', courseID);
-    if (courseID) {
-      this.coursesService.getCourseByID$(courseID).subscribe({
-        next: (c) => {
-          console.log('course data:', c);
-          if (c) {
-            this.courseForm.patchValue(c); //parcheo para ver los datos del curso a editar en el dialog
-          }
-        },
-      });
+    if (course) {
+      this.courseForm.patchValue(course);
     }
+    this.coursesDialogService.getTeachers$().subscribe((teachers) => {
+      this.teachers = teachers;
+    });
   } //referencia al diálogo
 
   onSubmit(): void {

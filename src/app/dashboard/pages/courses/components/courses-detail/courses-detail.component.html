@@ -1,1 +1,14 @@
-<p>courses-detail works!</p>
+<mat-card *ngIf="course">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ course.name }}</mat-card-title>
+    <mat-card-subtitle>Docente: {{ course.teacher }}</mat-card-subtitle>
+    <mat-card-subtitle>Inicio: {{ course.startDate | date }}</mat-card-subtitle>
+    <mat-card-subtitle
+      >Finalización : {{ course.finishDate | date }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Agrega aquí otros campos según tus necesidades -->
+  </mat-card-content>
+</mat-card>

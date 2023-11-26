@@ -1,1 +1,11 @@
-<p>student-detail works!</p>
+<mat-card *ngIf="student">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ student | fullname }}</mat-card-title>
+    <mat-card-subtitle>Email: {{ student.email }}</mat-card-subtitle>
+    <mat-card-subtitle>Edad: {{ student.age }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Agrega aquí otros campos según tus necesidades -->
+  </mat-card-content>
+</mat-card>

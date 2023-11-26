@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Crear Inscripción</h1>
+<ng-container *ngIf="isLoading$ | async; else formulario">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-container>
+<ng-template #formulario>
+  <div mat-dialog-content>
+    <form class="row">
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Curso</mat-label>
+          <mat-select [formControl]="courseIdControl">
+            <mat-option
+              *ngFor="let course of courseSelector$ | async"
+              [value]="course.id"
+              >{{ course.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Alumno</mat-label>
+          <mat-select [formControl]="studentIdControl">
+            <mat-option
+              *ngFor="let student of studentSelector$ | async"
+              [value]="student.id"
+              >{{ student | fullname }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-dialog-close mat-raised-button color="warn">
+          Cancelar
+        </button>
+        <button (click)="onSubmit()" mat-raised-button color="primary">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

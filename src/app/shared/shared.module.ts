@@ -13,6 +13,10 @@ import { ErrorFormsPipe } from './pipes/error-forms.pipe';
 import { MatListModule } from '@angular/material/list';
 import { TitleFontDirective } from './directives/title-font.directive';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [FullnamePipe, ErrorFormsPipe, TitleFontDirective],
   imports: [CommonModule],
@@ -31,6 +35,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatListModule,
     TitleFontDirective,
     MatDatepickerModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class SharedModule {}

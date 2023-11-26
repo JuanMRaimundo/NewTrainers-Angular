@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  {{ studentId ? "Editar alumno" : "Crear alumno" }}
+  {{ student ? "Editar alumno" : "Crear alumno" }}
 </h1>
 <div mat-dialog-content>
   <form [formGroup]="studentForm">
@@ -47,6 +47,8 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-dialog-close mat-button>Cancelar</button>
-  <button mat-button (click)="onSubmit()">Guardar</button>
+  <button mat-dialog-close mat-raised-button color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    Guardar
+  </button>
 </div>

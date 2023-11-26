@@ -11,16 +11,10 @@
 <mat-list-item routerLink="students">
   <button mat-stroked-button color="accent">Alumnos</button>
 </mat-list-item>
-<mat-list-item>
-  <button mat-stroked-button color="accent">Postularme</button>
+<mat-list-item routerLink="inscriptions">
+  <button mat-stroked-button color="accent">Inscripciones</button>
 </mat-list-item>
 
-<mat-list-item>
-  <a matListItemTitle href="..."></a>
-  <button mat-icon-button matListItemMeta>
-    <mat-icon color="accent">manage_accounts</mat-icon>
-  </button>
-</mat-list-item>
 <mat-list-item (click)="logout()">
   <button mat-icon-button matListItemMeta>
     <mat-icon color="warn">logout</mat-icon>

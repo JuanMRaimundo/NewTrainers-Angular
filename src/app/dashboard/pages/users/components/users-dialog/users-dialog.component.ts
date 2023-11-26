@@ -1,8 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { UsersService } from '../../user.service';
-import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models';
 
 @Component({
@@ -11,26 +9,36 @@ import { User } from '../../models';
   styleUrls: ['./users-dialog.component.scss'],
 })
 export class UsersDialogComponent {
-  nameControl = new FormControl();
-  lastNameControl = new FormControl();
-  emailControl = new FormControl();
+  nameControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  lastNameControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+  roleControl = new FormControl('', [Validators.required]);
   ageControl = new FormControl();
+  passwordControl = new FormControl('', [
+    Validators.minLength(8),
+    Validators.required,
+  ]);
 
   userForm = new FormGroup({
     name: this.nameControl,
     lastName: this.lastNameControl,
     email: this.emailControl,
     age: this.ageControl,
+    role: this.roleControl,
+    password: this.passwordControl,
   });
 
   constructor(
     private matDialogRef: MatDialogRef<UsersDialogComponent>,
-    private usersService: UsersService,
     @Inject(MAT_DIALOG_DATA) public user?: User
   ) {
     if (user) {
-      console.log(user);
-
       this.userForm.patchValue(user);
     }
   }

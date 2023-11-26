@@ -23,7 +23,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-10">
+      <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
           <input matInput [formControl]="emailControl" />
@@ -33,8 +33,31 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [formControl]="passwordControl" type="password" />
 
-      <div class="col-2">
+          <mat-error>
+            {{ passwordControl.errors | errorForms }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100">
+          <mat-label>Puesto</mat-label>
+          <mat-select [formControl]="roleControl">
+            <mat-option value="ADMIN">Admin</mat-option>
+            <mat-option value="TEACHER">Teacher</mat-option>
+          </mat-select>
+
+          <mat-error>
+            {{ roleControl.errors | errorForms }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-4">
         <mat-form-field class="w-100">
           <mat-label>Edad</mat-label>
           <input matInput [formControl]="ageControl" />
@@ -47,6 +70,8 @@
   </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-dialog-close mat-button>Cancelar</button>
-  <button mat-button (click)="onSubmit()">Guardar</button>
+  <button mat-dialog-close mat-raised-button color="warn">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    Guardar
+  </button>
 </div>

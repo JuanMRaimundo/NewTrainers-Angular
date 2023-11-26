@@ -4,8 +4,6 @@ import { map } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 export const dashboardGuard: CanActivateFn = () => {
-  console.log('DASHBOARD GUARD');
-
   const router = inject(Router);
   const authService = inject(AuthService);
 

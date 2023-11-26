@@ -1,4 +1,8 @@
 <h1>Mis Alumnos</h1>
+<mat-progress-bar
+  *ngIf="loadingStudents"
+  mode="indeterminate"
+></mat-progress-bar>
 <app-student-table
   [dataSource]="(students$ | async) || []"
   (deleteStudent)="onDeleteStudent($event)"

@@ -15,9 +15,15 @@ import { StudentsService } from '../../students.service';
   styleUrls: ['./student-dialog.component.scss'],
 })
 export class StudentDialogComponent {
-  nameControl = new FormControl();
-  lastNameControl = new FormControl();
-  emailControl = new FormControl();
+  nameControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  lastNameControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
   ageControl = new FormControl();
 
   studentForm = new FormGroup({
@@ -30,22 +36,12 @@ export class StudentDialogComponent {
   constructor(
     private studentsService: StudentsService,
     private matDialogRef: MatDialogRef<StudentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public studentId?: Student
+    @Inject(MAT_DIALOG_DATA) public student?: Student
   ) {
-    /* this.studentForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      age: ['', Validators.required],
-    }); */
-    if (studentId) {
-      console.log(studentId);
-
-      this.studentsService.getStudentByID$(studentId.id).subscribe({
+    if (student) {
+      this.studentsService.getStudentByID$(student.id).subscribe({
         next: (s) => {
           if (s) {
-            console.log(s);
-
             this.studentForm.patchValue(s);
           }
         },

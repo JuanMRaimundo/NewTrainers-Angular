@@ -10,6 +10,9 @@ import { User } from 'src/app/dashboard/pages/users/models';
 import { environment } from 'src/environments/environment.local';
 import { MockProvider } from 'ng-mocks';
 import { Router } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
+import { State } from 'src/app/store/auth/auth.reducer';
+import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 describe('AuthService Test', () => {
   let service: AuthService;
@@ -18,7 +21,29 @@ describe('AuthService Test', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [MockProvider(Router)],
+      providers: [
+        MockProvider(Router),
+        provideMockStore<State>({
+          initialState: {
+            authUser: null,
+          },
+          selectors: [
+            {
+              selector: selectAuthUser,
+              value: {
+                id: 1,
+                name: 'proof',
+                lastName: 'test',
+                email: 'proof@email.com',
+                password: '123456789',
+                age: 32,
+                token: 'karls3rd3j34bfakd342jb',
+                role: 'ADMIN',
+              },
+            },
+          ],
+        }),
+      ],
     });
     service = TestBed.inject(AuthService);
     httpController = TestBed.inject(HttpTestingController);
@@ -37,7 +62,7 @@ describe('AuthService Test', () => {
       password: '123456789',
       age: 32,
       token: 'karls3rd3j34bfakd342jb',
-      role: 'adminTest',
+      role: 'ADMIN',
     };
     service.login({
       email: userMock.email,

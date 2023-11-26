@@ -1,4 +1,6 @@
 <h1>Mis Usuarios</h1>
+<mat-progress-bar *ngIf="loadingUsers" mode="indeterminate"></mat-progress-bar>
+
 <app-users-table
   [dataSource]="(users$ | async) || []"
   (deleteUser)="onDeleteUser($event)"

@@ -25,6 +25,7 @@
         mat-icon-button
         color="accent"
         (click)="editStudent.emit(element)"
+        [disabled]="(userRole$ | async) != 'ADMIN'"
       >
         <mat-icon>edit_square</mat-icon>
       </button>
@@ -39,6 +40,7 @@
         mat-icon-button
         color="warn"
         (click)="deleteStudent.emit(element.id)"
+        [disabled]="(userRole$ | async) != 'ADMIN'"
       >
         <mat-icon>delete</mat-icon>
       </button>

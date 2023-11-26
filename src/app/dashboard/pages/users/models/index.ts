@@ -6,5 +6,5 @@ export interface User {
   password: string;
   age: number;
   token: string;
-  role: string;
+  role: 'ADMIN' | 'TEACHER';
 }

@@ -1,1 +1,12 @@
-<p>user-detail works!</p>
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ user | fullname }}</mat-card-title>
+    <mat-card-subtitle>Email: {{ user.email }}</mat-card-subtitle>
+    <mat-card-subtitle>Edad: {{ user.age }}</mat-card-subtitle>
+    <mat-card-subtitle>Puesto: {{ user.role }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Agrega aquí otros campos según tus necesidades -->
+  </mat-card-content>
+</mat-card>

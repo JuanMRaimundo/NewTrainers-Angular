@@ -32,71 +32,135 @@
     },
     {
       "name": "Marta",
-      "lastName": "Remeira",
+      "lastName": "Rosas",
       "email": "marta@admin.com",
-      "password": "321654",
       "age": "56",
-      "token": "963562741",
-      "role": "ADMIN",
-      "id": 8
+      "role": "TEACHER",
+      "id": 8,
+      "token": "314835435",
+      "password": "3216574145"
     },
     {
       "id": 9,
       "name": "Agustin",
       "lastName": "Pereyra",
-      "email": "agusP@admin.com",
+      "email": "agusP@teacher.com",
       "age": "33",
-      "token": ""
-    },
-    {
-      "id": 10,
-      "name": "Alfredo",
-      "lastName": "Castaño",
-      "email": "alfredoC@admin.com",
-      "age": "25",
-      "token": ""
-    },
-    {
-      "id": 11,
-      "name": "Juan Marco",
-      "lastName": "Raimundo",
-      "email": null,
-      "age": null,
-      "token": ""
+      "role": "TEACHER",
+      "token": "314843",
+      "password": "321655"
     },
     {
       "id": 12,
       "name": "Santiago",
       "lastName": "Olivera",
-      "email": "santiago.olivera@admin.com",
+      "email": "santiago.olivera@teacher.com",
       "age": "32",
-      "token": ""
+      "role": "TEACHER",
+      "password": "753684",
+      "token": "26846"
+    },
+    {
+      "id": 13,
+      "name": "Alfredo",
+      "lastName": "Moneti",
+      "email": "alfredo.moneti@admin.com",
+      "age": "35",
+      "token": "368543"
+    },
+    {
+      "id": 14,
+      "name": "Mariano",
+      "lastName": "Elebi",
+      "email": "mariano.elebi@admin.com",
+      "password": "147741321",
+      "age": "38",
+      "role": "TEACHER",
+      "token": "98875"
+    },
+    {
+      "id": 15,
+      "name": "Ernesto",
+      "lastName": "Damesco",
+      "email": "ernesto.damesco@admin.com",
+      "password": "95135736",
+      "age": "45",
+      "role": "TEACHER",
+      "token": "6844"
+    },
+    {
+      "id": 16,
+      "name": "Mariano",
+      "lastName": "Suárez",
+      "email": "mariano.s@teacher.com",
+      "password": "36541258222",
+      "age": "36",
+      "role": "TEACHER",
+      "token": "54855"
+    },
+    {
+      "id": 17,
+      "name": "Francisco",
+      "lastName": "Gallego",
+      "email": "francisco.g@teacher.com",
+      "password": "654987321",
+      "age": "32",
+      "role": "TEACHER",
+      "token": "65844"
+    },
+    {
+      "id": 18,
+      "name": "Raquel",
+      "lastName": "Herrera",
+      "email": "raquel.h@teacher.com",
+      "password": "35741258",
+      "age": "42",
+      "role": "TEACHER",
+      "token": "5205"
     }
   ],
   "courses": [
     {
-      "id": 1,
       "name": "Entrenamiento Funcional",
-      "startDate": "",
-      "endDate": "",
-      "teacher": "",
-      "students": []
+      "teacher": "Agustin Pereyra",
+      "startDate": "2024-01-15T03:00:00.000Z",
+      "finishDate": "2024-12-10T03:00:00.000Z",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Entrenamiento personalizado",
-      "startDate": "",
-      "endDate": "",
-      "teacher": "",
-      "students": []
+      "teacher": "Santiago Olivera",
+      "startDate": "2023-12-18T03:00:00.000Z",
+      "finishDate": "2024-07-23T03:00:00.000Z",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "Entrenamiento infanto-juvenil",
-      "startDate": "",
-      "endDate": "",
-      "teacher": "",
-      "students": []
+      "name": "Practivas Introyectivas",
+      "teacher": "Santiago Olivera",
+      "startDate": "2023-11-22T03:00:00.000Z",
+      "finishDate": "2024-03-22T03:00:00.000Z",
+      "id": 4
+    },
+    {
+      "name": "Fútbol Infanto-juvenil",
+      "teacher": "Mariano Elebi",
+      "startDate": "2024-03-04T03:00:00.000Z",
+      "finishDate": "2024-11-28T03:00:00.000Z",
+      "id": 5
+    },
+    {
+      "name": "Alto Rendimiento",
+      "teacher": "Santiago Olivera",
+      "startDate": "2023-11-29T03:00:00.000Z",
+      "finishDate": "2023-12-29T03:00:00.000Z",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "name": "Natación",
+      "teacher": "Mariano Suárez",
+      "startDate": "2023-11-30T03:00:00.000Z",
+      "finishDate": "2024-11-28T03:00:00.000Z"
     }
   ],
   "students": [
@@ -108,18 +172,25 @@
       "age": 18
     },
     {
-      "id": 354635,
-      "name": "Joaquin",
-      "lastName": "Sola",
-      "email": "joaquin.sola@alumnos.com",
-      "age": 21
+      "id": 369852,
+      "name": "Romina",
+      "lastName": "Estrada",
+      "email": "romina@alumnos.com",
+      "age": 18
     },
     {
-      "id": 673834,
-      "name": "Florencia",
-      "lastName": "Sava",
-      "email": "florencia.sava@alumnos.com",
-      "age": 19
+      "name": "Pilar",
+      "lastName": "Miranda",
+      "email": "pilar.miranda@alumnos.com",
+      "age": "19",
+      "id": 354635
+    },
+    {
+      "name": "PEDRO",
+      "lastName": "GUILLERME",
+      "email": "PEDRO@ALUMNO.COM",
+      "age": "18",
+      "id": 673834
     },
     {
       "id": 754691,
@@ -129,11 +200,84 @@
       "age": 22
     },
     {
-      "id": 7658412,
+      "name": "Emiliano",
+      "lastName": "Hernández",
+      "email": "emiliano.hernandez@alumnos.com",
+      "age": "18",
+      "id": 754692
+    },
+    {
+      "name": "Sonia",
+      "lastName": "Rivarola",
+      "email": "sonia.rivarola@alumnos.com",
+      "age": "19",
+      "id": 754693
+    },
+    {
+      "name": "Fernanda",
+      "lastName": "Braco",
+      "email": "fernanda.b@alumnos.com",
+      "age": "22",
+      "id": 754694
+    },
+    {
       "name": "Pedro",
-      "lastName": "Figalo",
-      "email": "pedro.figalo@alumnos.com",
-      "age": 19
+      "lastName": "Clementino",
+      "email": "pedro.c@alumnos.com",
+      "age": "23",
+      "id": 754695
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": 4,
+      "courseId": 1,
+      "studentId": 673834
+    },
+    {
+      "id": 5,
+      "courseId": 1,
+      "studentId": 684132
+    },
+    {
+      "id": 6,
+      "courseId": 2,
+      "studentId": 684132
+    },
+    {
+      "id": 7,
+      "courseId": 2,
+      "studentId": 369852
+    },
+    {
+      "id": 8,
+      "courseId": 2,
+      "studentId": 673834
+    },
+    {
+      "courseId": 5,
+      "studentId": 673834,
+      "id": 11
+    },
+    {
+      "courseId": 4,
+      "studentId": 369852,
+      "id": 12
+    },
+    {
+      "courseId": 5,
+      "studentId": 754693,
+      "id": 13
+    },
+    {
+      "courseId": 6,
+      "studentId": 754694,
+      "id": 14
+    },
+    {
+      "courseId": 6,
+      "studentId": 369852,
+      "id": 15
     }
   ]
 }
